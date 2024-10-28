@@ -37,11 +37,23 @@ public class BattleSystem : AnimatorProperty, IBattle
     public GameObject myTarget;
     //인스펙트에서 확인할 수 없고 실시간 연동되므로 UnityEvent가 아닌 UnityAction 사용
     public UnityAction deathAlarm { get; set; }
+    public UnityEvent<float> hpObserbs;
     public bool IsLive
     {
         get
         {
             return battleStat.CurHP > 0.0f;
+        }
+    }
+
+    public float curHP
+    {
+        get => battleStat.CurHP;
+        set
+        {
+
+            battleStat.CurHP = value;
+            hpObserbs?.Invoke(battleStat.CurHP/battleStat.MaxHP);
         }
     }
 
@@ -58,9 +70,8 @@ public class BattleSystem : AnimatorProperty, IBattle
 
     public void OnDamage(float dmg)
     {
-        battleStat.CurHP -= dmg;
-        Debug.Log(battleStat.CurHP);
-        if (battleStat.CurHP > 0.0f)
+        curHP -= dmg;
+        if (curHP > 0.0f)
         {
             myAnim.SetTrigger(animData.OnDamage);
         }

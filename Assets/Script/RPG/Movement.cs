@@ -93,7 +93,6 @@ public class Movement : BattleSystem
         int count = 0;
         while (target != null)
         {
-            playTime += Time.deltaTime;
             myAnim.SetBool(animData.IsMoving, true);
             Vector3 dir = target.position - transform.position;
             float dist = dir.magnitude;

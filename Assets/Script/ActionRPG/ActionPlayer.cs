@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class ActionPlayer : AnimatorProperty
+public class ActionPlayer : BattleSystem
 {
     public Rigidbody myRigid;
     public LayerMask enemyMask;

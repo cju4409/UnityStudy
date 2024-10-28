@@ -56,6 +56,7 @@ public class Monster : AIMovement
             case State.Normal:
                 break;
             case State.Battle:
+                playTime += Time.deltaTime;
                 break;
         }
     }

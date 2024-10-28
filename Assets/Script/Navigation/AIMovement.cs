@@ -83,14 +83,35 @@ public class AIMovement : Movement
                         if (path.corners.Length > 1)
                         {
                             myAnim.SetBool(animData.IsMoving, true);
-                            Vector3 dir = path.corners[1] - transform.position;
-                            float dist = dir.magnitude;
-                            dir.Normalize();
 
-                            float delta = Time.deltaTime * moveSpeed;
-                            if (delta > dist) delta = dist;
-                            transform.Translate(dir * delta, Space.World);
-                            dist -= delta;
+                            Vector3 targetPos = path.corners[1];
+                            targetPos.y = transform.position.y;
+                            Vector3 dir = targetPos - transform.position;
+
+                            //Vector3 dir = path.corners[1] - transform.position;
+                            float dist = dir.magnitude;
+                            float delta;
+
+                            if (dist > battleStat.AttackRange)
+                            {
+                                dir.Normalize();
+                                delta = Time.deltaTime * moveSpeed;
+                                if (delta > dist) delta = dist;
+                                transform.Translate(dir * delta, Space.World);
+                                dist -= delta;
+                            }
+                            else
+                            {
+                                if(playTime >= battleStat.AttackDelay)
+                                {
+                                    playTime = 0.0f;
+                                    myAnim.SetTrigger(animData.OnAttack);
+                                }
+                            }
+
+                            //if (delta > dist) delta = dist;
+                            //transform.Translate(dir * delta, Space.World);
+                            //dist -= delta;
 
                             float angle = Vector3.Angle(transform.forward, dir);
                             float rotDir = Vector3.Dot(transform.right, dir) < 0 ? -1.0f : 1.0f;
