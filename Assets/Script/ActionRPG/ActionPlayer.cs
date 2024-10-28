@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using UnityEngine.EventSystems;
 
 public class ActionPlayer : BattleSystem
 {
@@ -46,18 +46,24 @@ public class ActionPlayer : BattleSystem
             StartCoroutine(Jumping(1.0f, 2.0f));
         }
 
-        if (Input.GetMouseButtonDown(0) && !myAnim.GetBool(animData.IsAttack))
+        // EventSystem.current.IsPointerOverGameObject : 현재 마우스 포인터가 UI위에 올라가있는지 아닌지 bool값을 리턴함
+        if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0) && !myAnim.GetBool(animData.IsAttack))
         {
             myAnim.SetTrigger(animData.OnAttack);
         }
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            myAnim.SetTrigger(animData.OnJumpAttack);
+            OnSkill();
         }
     }
 
-    public void OnAttack()
+    public void OnSkill()
+    {
+        myAnim.SetTrigger(animData.OnJumpAttack);
+    }
+
+    public new void OnAttack()
     {
         //Overlap : 특정 영역안에 오버랩된 오브젝트들과의 충돌을 불러옴
         Collider[] list = Physics.OverlapSphere(transform.position + transform.forward, 1.0f, enemyMask);
