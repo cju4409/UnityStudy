@@ -44,7 +44,6 @@ public class Monster : AIMovement
                 base.OnFollow(myTarget.transform);
                 break;
             case State.Death:
-                base.StopAllCoroutines();
                 StopAllCoroutines();
                 break;
         }

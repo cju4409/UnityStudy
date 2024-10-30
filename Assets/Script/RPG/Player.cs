@@ -23,6 +23,7 @@ public class Player : Movement
             myTarget = target;
             myTarget.GetComponent<IDeathAlarm>().deathAlarm = () =>
             {
+                Debug.Log("데스알람!");
                 StopAllCoroutines();
                 myTarget = null;
             };

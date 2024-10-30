@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -78,6 +79,8 @@ public class BattleSystem : AnimatorProperty, IBattle
         else
         {
             OnDead();
+            myAnim.ResetTrigger(animData.OnJump);
+            myAnim.ResetTrigger(animData.OnAttack);
             myAnim.SetTrigger(animData.OnDead);
         }
     }
