@@ -35,17 +35,16 @@ public class DragItem : ImageProperty, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnChangeParent(Transform p, bool change = false)
     {
-        if (change)
+        if (!change)
+        {
+            myParent.GetComponent<DropItem>().OnChangeChild(null);
+            myParent = p;
+        } else
         {
             myParent = p;
             transform.SetParent(myParent);
             transform.localPosition = Vector3.zero;
             myParent.GetComponent<DropItem>().OnChangeChild(this);
-        }
-        else
-        {
-            myParent.GetComponent<DropItem>().OnChangeChild(null);
-            myParent = p;
         }
     }
 

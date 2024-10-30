@@ -56,6 +56,12 @@ public class ActionPlayer : BattleSystem
         {
             OnSkill();
         }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            //SetActive:활성/비활성 상태로 전환
+            Inventory.Instance.gameObject.SetActive(!Inventory.Instance.gameObject.activeSelf);
+        }
     }
 
     public void OnSkill()

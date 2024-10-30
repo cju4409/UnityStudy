@@ -9,15 +9,18 @@ public class DropItem : MonoBehaviour, IDropHandler
     DragItem myChild = null;
     public void OnDrop(PointerEventData eventData)
     {
+        Debug.Log(eventData.pointerDrag.name);
         // eventData.pointerDrag : 드랍한 곳에 있는 오브젝트
         DragItem newChild = eventData.pointerDrag.GetComponent<DragItem>();
         if (newChild == null) return;
+        Transform p = newChild.myParent;
+        newChild.OnChangeParent(transform);
         if (myChild != null)
         {
-            myChild.OnChangeParent(newChild.myParent, true);
+            myChild.OnChangeParent(p, true);
         }
-        newChild.OnChangeParent(transform);
-        OnChangeChild(newChild);
+        //OnChangeChild(newChild);
+        myChild = newChild;
     }
 
     public void OnChangeChild(DragItem child)
