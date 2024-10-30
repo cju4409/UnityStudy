@@ -16,6 +16,7 @@ public class Monster : AIMovement
     Vector3 createPos;
 
     Coroutine myCoro;
+    public Transform barPoint;
 
     void ChangeState(State s)
     {
@@ -122,6 +123,16 @@ public class Monster : AIMovement
         OnReset();
         createPos = transform.position;
         ChangeState(State.Normal);
+
+        //Resources폴더안에 있는것들은 Resources 클래스를 통해서 불러올 수 있음
+        HpBar hpBar = Instantiate(Resources.Load("Prefabs/HpBar") as GameObject, 
+            SceneData.Instance.uiCanvas).GetComponent<HpBar>();
+        hpBar.myTarget = barPoint;
+
+        //AddListener: 코드로 UnityEvent 델리게이트 추가
+        hpObserbs.AddListener(hpBar.OnChange);
+
+        deathAlarm += () => Destroy(hpBar.gameObject);
     }
 
     // Update is called once per frame
