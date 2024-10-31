@@ -11,7 +11,7 @@ public class ActionPlayer : BattleSystem
     // Start is called before the first frame update
     void Start()
     {
-
+        OnReset();
     }
 
     // Update is called once per frame

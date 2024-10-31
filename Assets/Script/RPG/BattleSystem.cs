@@ -33,6 +33,7 @@ public struct BattleStat
 }
 public class BattleSystem : AnimatorProperty, IBattle
 {
+    public Color minimapIconColor;
     public BattleStat battleStat;
     protected float playTime = 0.0f;
     public GameObject myTarget;
@@ -62,6 +63,13 @@ public class BattleSystem : AnimatorProperty, IBattle
     protected void OnReset()
     {
         battleStat.CurHP = battleStat.MaxHP;
+
+        //MinimapIcon
+        MinimapIcon icon = Instantiate(Resources.Load("Prefabs/MinimapIcon") as GameObject, 
+            SceneData.Instance.miniMap).GetComponent<MinimapIcon>();
+        icon.myTarget = transform;
+        icon.SetColor(minimapIconColor);
+        deathAlarm += () => Destroy(icon.gameObject);
     }
 
     protected virtual void OnDead()
@@ -79,7 +87,6 @@ public class BattleSystem : AnimatorProperty, IBattle
         else
         {
             OnDead();
-            myAnim.ResetTrigger(animData.OnJump);
             myAnim.ResetTrigger(animData.OnAttack);
             myAnim.SetTrigger(animData.OnDead);
         }

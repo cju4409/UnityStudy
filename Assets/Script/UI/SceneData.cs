@@ -9,6 +9,8 @@ public class SceneData : MonoBehaviour
         get; private set;
     }
     public Transform uiCanvas;
+    public Transform hpBarRoot;
+    public Transform miniMap;
     // Start is called before the first frame update
     void Awake()
     {
