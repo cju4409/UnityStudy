@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
-
-
 public class Monster : AIMovement
 {
     public enum State
@@ -16,6 +13,7 @@ public class Monster : AIMovement
     Vector3 createPos;
 
     Coroutine myCoro;
+    public Transform barPoint;
 
     void ChangeState(State s)
     {
@@ -43,7 +41,6 @@ public class Monster : AIMovement
                 base.OnFollow(myTarget.transform);
                 break;
             case State.Death:
-                base.StopAllCoroutines();
                 StopAllCoroutines();
                 break;
         }
@@ -56,6 +53,7 @@ public class Monster : AIMovement
             case State.Normal:
                 break;
             case State.Battle:
+                playTime += Time.deltaTime;
                 break;
         }
     }
@@ -87,11 +85,11 @@ public class Monster : AIMovement
         base.OnDead();
         ChangeState(State.Death);
     }
-    
+
     public void OnDelete()
     {
         StartCoroutine(DeleteAction(3));
-    } 
+    }
 
     //yield return은 일반함수에서는 쓸 수 없으며 오직 코루틴에서만 사용가능
     IEnumerator DelayAction(float t, UnityEngine.Events.UnityAction act)
@@ -121,6 +119,16 @@ public class Monster : AIMovement
         OnReset();
         createPos = transform.position;
         ChangeState(State.Normal);
+
+        //Resources폴더안에 있는것들은 Resources 클래스를 통해서 불러올 수 있음
+        HpBar hpBar = Instantiate(Resources.Load("Prefabs/HpBar") as GameObject,
+            SceneData.Instance.hpBarRoot).GetComponent<HpBar>();
+        hpBar.myTarget = barPoint;
+
+        //AddListener: 코드로 UnityEvent 델리게이트 추가
+        hpObserbs.AddListener(hpBar.OnChange);
+
+        deathAlarm += () => Destroy(hpBar.gameObject);
     }
 
     // Update is called once per frame

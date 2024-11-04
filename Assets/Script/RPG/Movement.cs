@@ -90,10 +90,8 @@ public class Movement : BattleSystem
 
     IEnumerator Following(Transform target)
     {
-        int count = 0;
         while (target != null)
         {
-            playTime += Time.deltaTime;
             myAnim.SetBool(animData.IsMoving, true);
             Vector3 dir = target.position - transform.position;
             float dist = dir.magnitude;
@@ -112,8 +110,6 @@ public class Movement : BattleSystem
                 myAnim.SetBool(animData.IsMoving, false);
                 if (playTime >= battleStat.AttackDelay)
                 {
-                    count++;
-                    Debug.Log("공격!" + count);
                     //애니메이션에서 트리거 사용
                     myAnim.SetTrigger(animData.OnAttack);
                     playTime = 0.0f;
