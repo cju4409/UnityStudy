@@ -95,5 +95,6 @@ public class BattleSystem : AnimatorProperty, IBattle
     public void OnAttack()
     {
         myTarget?.GetComponent<IDamage>().OnDamage(battleStat.AP);
+        transform.Rotate(Vector3.up * 180.0f * Time.deltaTime);
     }
 }
