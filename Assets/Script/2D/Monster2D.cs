@@ -43,7 +43,7 @@ public class Monster2D : Movement2D
                 if(!myAnim.GetBool("IsAir") && maxDist <= 0.0f)
                 {
                     moveDir *= -1.0f;
-                    render.flipX = !render.flipX;
+                    myRenderer.flipX = !myRenderer.flipX;
                     if(curGround != null) OnCheckGround(curGround);
                 }
                 break;
@@ -54,7 +54,6 @@ public class Monster2D : Movement2D
     // Start is called before the first frame update
     void Start()
     {
-        render = GetComponentInChildren<SpriteRenderer>();
         ChangeState(State.Normal);
     }
 
@@ -70,7 +69,7 @@ public class Monster2D : Movement2D
         curGround = tr;
         float halfDist = tr.localScale.x * 0.5f;
         float dist = tr.position.x - transform.position.x;
-        if(render.flipX)
+        if(myRenderer.flipX)
         {
             maxDist = halfDist - dist;
         }

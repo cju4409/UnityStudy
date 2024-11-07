@@ -28,7 +28,6 @@ public class Movement2D : SpriteProperty
             return _rigid;
         }
     }
-    protected SpriteRenderer render;
     public float moveSpeed = 2.0f;
 
 
@@ -46,7 +45,7 @@ public class Movement2D : SpriteProperty
         else
         {
             myAnim.SetBool("IsMoving", true);
-            if (render != null) render.flipX = moveDir.x < 0.0f ? true : false;
+            myRenderer.flipX = moveDir.x < 0.0f ? true : false;
         }
     }
 

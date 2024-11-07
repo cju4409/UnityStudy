@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Player2D : Movement2D
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        render = GetComponentInChildren<SpriteRenderer>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -29,7 +24,6 @@ public class Player2D : Movement2D
             myAnim.SetTrigger(animData.OnAttack);
         }
 
-        if(myRenderer != null) Debug.Log("¿÷¿Ω");
     }
 
 }

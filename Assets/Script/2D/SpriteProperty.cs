@@ -9,7 +9,7 @@ public class SpriteProperty : AnimatorProperty
     {
         get
         {
-            if (_render = null)
+            if (_render == null)
             {
                 _render = GetComponentInChildren<SpriteRenderer>();
             }
