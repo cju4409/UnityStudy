@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
-public class Player2D : Movement2D
+public class Player2D : BattleSystem2D
 {
-
+    public LayerMask myEnemy;
     // Update is called once per frame
     void Update()
     {
@@ -24,6 +25,17 @@ public class Player2D : Movement2D
             myAnim.SetTrigger(animData.OnAttack);
         }
 
+    }
+
+
+    public void OnAttack()
+    {
+        Vector2 dir = new Vector2(myRenderer.flipX ? -1.0f: 1.0f, 0.0f);
+        Collider2D[] list = Physics2D.OverlapCircleAll((Vector2)transform.position + dir, 1.0f, myEnemy);
+        foreach(Collider2D c in list)
+        {
+            c.GetComponent<IDamage>()?.OnDamage(battleStat.AP);
+        }
     }
 
 }
