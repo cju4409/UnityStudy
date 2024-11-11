@@ -75,12 +75,14 @@ public class Movement2D : SpriteProperty
         myRigid.AddForce(Vector2.up * 500.0f);
         // WaitForFixedUpdate : 물리 처리까지 기다림
         yield return new WaitForFixedUpdate();
-        myColider.isTrigger = true;
+        //myColider.isTrigger = true;
+        myColider.enabled = false;
         while (myRigid.velocity.y > 0.0f)
         {
             yield return null;
         }
-        myColider.isTrigger = false;
+        //myColider.isTrigger = false;
+        myColider.enabled = true;
     }
 
 }
