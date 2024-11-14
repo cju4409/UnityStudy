@@ -6,6 +6,8 @@ public class TPSPlayer : AnimatorProperty
 {
     public Transform mySpin;
     public Transform mySpringArm;
+    public AudioSource myGunSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +22,24 @@ public class TPSPlayer : AnimatorProperty
 
         if (Input.GetMouseButtonDown(0)) myAnim.SetBool("IsFire", true);
         if (Input.GetMouseButtonUp(0)) myAnim.SetBool("IsFire", false);
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            Study.SoundManager.instance.UpdateEffVolume(Study.SoundManager.instance.effVolume - 0.1f);
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            Study.SoundManager.instance.UpdateEffVolume(Study.SoundManager.instance.effVolume + 0.1f);
+        }
     }
 
     private void LateUpdate()
     {
         mySpin.localRotation = mySpringArm.localRotation;
+    }
+
+    public void OnFire()
+    {
+        Study.SoundManager.instance.PlayOneShot(myGunSound);
     }
 }
