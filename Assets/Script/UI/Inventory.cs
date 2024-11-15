@@ -13,16 +13,44 @@ public class Inventory : MonoBehaviour
     {
         get; private set;
     }
+    public ItemSlot[] mySlots;
+    public ItemData[] itemDataList;
+
+    ItemSlot FindBlankSlot()
+    {
+        foreach(ItemSlot s in mySlots)
+        {
+            if(s.myChild == null)
+            {
+                return s;
+            }
+        }
+        return null;
+    }
+
+    void AddItem(int i)
+    {
+        ItemSlot slot = FindBlankSlot();
+        if ( slot != null )
+        {
+            slot.myChild = Instantiate(Resources.Load<GameObject>("Prefabs/ItemIcon"), slot.transform).GetComponent<DragItem>();
+            (slot.myChild as ItemIcon).SetData(itemDataList[i]);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
         gameObject.SetActive(false);
+        mySlots = GetComponentsInChildren<ItemSlot>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.F8)) {
+            AddItem(Random.Range(0, itemDataList.Length));
+        }
     }
 }

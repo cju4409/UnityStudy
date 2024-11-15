@@ -3,8 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[System.Serializable]
+public struct PlayerData
+{
+    public string id;
+    public int exp;
+    public int gold;
+}
+
 public class ActionPlayer : BattleSystem
 {
+    public PlayerData myData;
     public Rigidbody myRigid;
     public LayerMask enemyMask;
     float targetX, targetY, curX, curY;
@@ -12,6 +21,10 @@ public class ActionPlayer : BattleSystem
     void Start()
     {
         OnReset();
+
+        //string temp = FileManager.LoadText($"{Application.dataPath}/Data/PlayerData.json");
+        //myData = JsonUtility.FromJson<PlayerData>(temp);
+        myData = FileManager.LoadFromBinary<PlayerData>($"{Application.dataPath}/Data/PlayerData.dat");
     }
 
     // Update is called once per frame
@@ -62,6 +75,13 @@ public class ActionPlayer : BattleSystem
             //SetActive:활성/비활성 상태로 전환
             Inventory.Instance.gameObject.SetActive(!Inventory.Instance.gameObject.activeSelf);
         }
+
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            //string temp = JsonUtility.ToJson(myData);
+            //FileManager.SaveText($"{Application.dataPath}/Data/PlayerData.json", temp);
+            FileManager.SaveToBinary<PlayerData>($"{Application.dataPath}/Data/PlayerData.dat", myData);
+        }
     }
 
     public void OnSkill()
@@ -73,25 +93,26 @@ public class ActionPlayer : BattleSystem
     {
         //Overlap : 특정 영역안에 오버랩된 오브젝트들과의 충돌을 불러옴
         Collider[] list = Physics.OverlapSphere(transform.position + transform.forward, 1.0f, enemyMask);
-        if(list != null)
+        if (list != null)
         {
             foreach (Collider col in list)
             {
                 IBattle ibat = col.GetComponent<IBattle>();
-                if(ibat != null && ibat.IsLive)
+                if (ibat != null && ibat.IsLive)
                 {
                     ibat.OnDamage(30.0f);
                 }
             }
         }
-        
+
     }
     public void OnJumpAttack()
     {
         Collider[] list = Physics.OverlapSphere(transform.position, 2.0f, enemyMask);
-        if(list != null)
+        if (list != null)
         {
-            foreach (Collider col in list) {
+            foreach (Collider col in list)
+            {
                 IBattle ibat = col.GetComponent<IBattle>();
                 if (ibat != null && ibat.IsLive)
                 {

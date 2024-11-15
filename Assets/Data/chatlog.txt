@@ -1,0 +1,15 @@
+<#ffffff>[일반] ㅈ베앚베ㅏㅔㅂ잘ㅈㅂ</color>
+<#ffffff>[일반] ㄷㅎ베자엡장젭</color>
+<#ffffff>[일반] ㅇㅂㅈㅇㅂㅈㅂ</color>
+<#ffffff>[일반] ㅎㅈㄷㄹ</color>
+<#ffffff>[일반] ㅇㅈㅂㅇㅈㅂ</color>
+<#ffffff>[일반] ㄷㅎㅂㄹㅈㅂㄱㅂㅈ</color>
+<#ffffff>[일반] ㅎㅁㄹㄹㅈㄷㅂ</color>
+<#ffffff>[일반] ㄼㅈㅎㅈㅂㅈㅂ</color>
+<#ffffff>[일반] ㄹㅇㄹㅈㅂㅇㅈㅂ</color>
+<#ffffff>[일반] ㅎㄷㅂㅇㅈㅇㅂㅈ</color>
+<#ffffff>[일반] ㅂㅈㅇㅂㅈㄼ</color>
+<#ffffff>[일반] ㅎㅂㅈㅈㅂㄼㄷㅎㄷㅂ</color>
+<#00ff00>[길드] ㅈㅇㅂㅈㅂㄷㅂㅎㅂㄷ</color>
+<#ffaa00>[거래] ㅎㅂㅈㄹㅈㅂㄼㅈ</color>
+<#0000ff>[파티] 232121ㅂㅈㅅㅂㅈㅅ</color>

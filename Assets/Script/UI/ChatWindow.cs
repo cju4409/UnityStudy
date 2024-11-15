@@ -19,7 +19,14 @@ public class ChatWindow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        string[] list = FileManager.LoadAllLines($"{Application.dataPath}/Data/chatlog.txt");
+        if(list != null)
+        {
+            foreach(string s in list)
+            {
+                AddChat(s, false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -27,8 +34,12 @@ public class ChatWindow : MonoBehaviour
     {
 
     }
-
     public void AddChat(string text)
+    {
+        AddChat(text, true);
+    }
+
+    public void AddChat(string text, bool IsSave)
     {
         if (text != "")
         {
@@ -39,7 +50,7 @@ public class ChatWindow : MonoBehaviour
             (item.transform as RectTransform).sizeDelta = size;
 
             int dropSelect = (int)myChannel;
-            text = $"<#{chatDrops[dropSelect].Item1}>[{chatDrops[dropSelect].Item2}] {text}</color>";
+            text = IsSave? $"<#{chatDrops[dropSelect].Item1}>[{chatDrops[dropSelect].Item2}] {text}</color>" : text;
 
             item.SetText(text);
 
@@ -51,6 +62,8 @@ public class ChatWindow : MonoBehaviour
             //스크롤을 가장 밑으로 내려줌. 하지만 Instantiate(오브젝트 생성)이 한프레임에 끝나는게 아니라서 코루틴으로 대기 후 실행
             //myScroll.value = 0;
             StartCoroutine(ScrollZero());
+
+            if(IsSave) FileManager.AppendText($"{Application.dataPath}/Data/chatlog.txt", text);
         }
     }
 
