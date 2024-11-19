@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Movement
 {
@@ -29,5 +30,10 @@ public class Player : Movement
             };
             if (target != null) base.OnFollow(target.transform);
         }
+    }
+
+    public void GotoMenu()
+    {
+        Loading.LoadScene(0);
     }
 }

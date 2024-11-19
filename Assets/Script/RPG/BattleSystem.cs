@@ -64,12 +64,16 @@ public class BattleSystem : AnimatorProperty, IBattle
     {
         battleStat.CurHP = battleStat.MaxHP;
 
-        //MinimapIcon
-        MinimapIcon icon = Instantiate(Resources.Load("Prefabs/MinimapIcon") as GameObject, 
-            SceneData.Instance.miniMap).GetComponent<MinimapIcon>();
-        icon.myTarget = transform;
-        icon.SetColor(minimapIconColor);
-        deathAlarm += () => Destroy(icon.gameObject);
+        if(SceneData.Instance?.miniMap != null)
+        {
+            //MinimapIcon
+            MinimapIcon icon = Instantiate(Resources.Load("Prefabs/MinimapIcon") as GameObject,
+                SceneData.Instance.miniMap).GetComponent<MinimapIcon>();
+            icon.myTarget = transform;
+            icon.SetColor(minimapIconColor);
+            deathAlarm += () => Destroy(icon.gameObject);
+        }
+        
     }
 
     protected virtual void OnDead()

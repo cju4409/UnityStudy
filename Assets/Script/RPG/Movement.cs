@@ -30,6 +30,10 @@ public class Movement : BattleSystem
         move = rotate = null;
     }
 
+    public void OnMoveToPos(Vector3 targetPos)
+    {
+        OnMove(targetPos, null);
+    }
     public Coroutine OnMove(Vector3 targetPos)
     {
         return OnMove(targetPos, null);

@@ -120,15 +120,20 @@ public class Monster : AIMovement
         createPos = transform.position;
         ChangeState(State.Normal);
 
-        //Resources폴더안에 있는것들은 Resources 클래스를 통해서 불러올 수 있음
-        HpBar hpBar = Instantiate(Resources.Load("Prefabs/HpBar") as GameObject,
-            SceneData.Instance.hpBarRoot).GetComponent<HpBar>();
-        hpBar.myTarget = barPoint;
+        if(SceneData.Instance?.hpBarRoot != null)
+        {
+            //Resources폴더안에 있는것들은 Resources 클래스를 통해서 불러올 수 있음
+            HpBar hpBar = Instantiate(Resources.Load("Prefabs/HpBar") as GameObject,
+                SceneData.Instance.hpBarRoot).GetComponent<HpBar>();
+            hpBar.myTarget = barPoint;
 
-        //AddListener: 코드로 UnityEvent 델리게이트 추가
-        hpObserbs.AddListener(hpBar.OnChange);
 
-        deathAlarm += () => Destroy(hpBar.gameObject);
+            //AddListener: 코드로 UnityEvent 델리게이트 추가
+            hpObserbs.AddListener(hpBar.OnChange);
+            deathAlarm += () => Destroy(hpBar.gameObject);
+        }
+        
+
     }
 
     // Update is called once per frame

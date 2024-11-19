@@ -10,11 +10,11 @@ public class ItemIcon : DragItem
     {
         myData = data;
         myImage.sprite = myData.icon;
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
