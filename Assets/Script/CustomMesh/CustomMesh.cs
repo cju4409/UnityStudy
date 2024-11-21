@@ -15,6 +15,11 @@ public class CustomMesh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CreatePiramid();
+    }
+
+    void CreatePiramid()
+    {
         Vector3[] vertices = new Vector3[16];
         //vertices[0] = new Vector3(-0.5f, 0.0f, -0.5f);
         //vertices[1] = new Vector3(-0.5f, 0.0f, 0.5f);
@@ -42,7 +47,7 @@ public class CustomMesh : MonoBehaviour
         vertices[9] = new Vector3(0.5f, 0.0f, -0.5f);
         vertices[10] = new Vector3(-0.5f, 0.0f, -0.5f);
         vertices[11] = new Vector3(0.0f, 0.75f, 0.0f);
-        
+
         //botom side
         vertices[12] = new Vector3(-0.5f, 0.0f, -0.5f);
         vertices[13] = new Vector3(-0.5f, 0.0f, 0.5f);
@@ -102,14 +107,51 @@ public class CustomMesh : MonoBehaviour
 
         myMesh.mesh.uv = uv;
         Vector3[] normals = new Vector3[vertices.Length];
-
         for (int i = 0; i < indices.Length; i += 3)
         {
-            Vector3 normal = CalNormal(vertices[indices[i]], vertices[indices[i+1]], vertices[indices[i+2]]);
+            Vector3 normal = CalNormal(vertices[indices[i]], vertices[indices[i + 1]], vertices[indices[i + 2]]);
             normals[indices[i]] = normals[indices[i + 1]] = normals[indices[i + 2]] = normal;
         }
-
         myMesh.mesh.normals = normals;
+
+        Color[] colors = new Color[vertices.Length];
+        for(int i =0; i < colors.Length; i++)
+        {
+            colors[i] = Color.green;
+        }
+        myMesh.mesh.colors = colors;
+    }
+
+    void CreateTriangle()
+    {
+        Vector3[] vertices = new Vector3[3];
+        vertices[0] = new Vector3(-0.5f, -0.5f, 0.0f);
+        vertices[1] = new Vector3(0.0f, 0.5f, 0.0f);
+        vertices[2] = new Vector3(0.5f, -0.5f, 0.0f);
+        myMesh.mesh.vertices = vertices;
+
+        int[] indices = new int[]
+        {
+            0, 1, 2,
+            0, 2, 1
+        };
+        myMesh.mesh.triangles = indices;
+
+        Vector3[] normals = new Vector3[vertices.Length];
+        for (int i = 0; i < indices.Length; i += 3)
+        {
+            Vector3 normal = CalNormal(vertices[indices[i]], vertices[indices[i + 1]], vertices[indices[i + 2]]);
+            normals[indices[i]] = normals[indices[i + 1]] = normals[indices[i + 2]] = normal;
+        }
+        myMesh.mesh.normals = normals;
+
+        Color[] colors = new Color[vertices.Length];
+        //colors[0] = colors[1] = colors[2] = Color.green;
+
+        colors[0] = Color.red;
+        colors[1] = Color.green;
+        colors[2] = Color.blue;
+        myMesh.mesh.colors = colors;
     }
 
     // Update is called once per frame
