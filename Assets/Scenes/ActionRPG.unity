@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877e1cb5f3c98624eac6b2f42ba27c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myChild: {fileID: 0}
 --- !u!1 &342110993
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +416,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  myData:
+    id: 
+    exp: 0
+    gold: 0
   myRigid: {fileID: 0}
   enemyMask:
     serializedVersion: 2
@@ -951,6 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877e1cb5f3c98624eac6b2f42ba27c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myChild: {fileID: 0}
 --- !u!1 &848664498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1057,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4557157854552245059, guid: 552035868732b294f93d82e67c1e034f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557157854552245059, guid: 552035868732b294f93d82e67c1e034f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 71e577c9c8a86a048a75d2bdd497309a, type: 2}
+    - target: {fileID: 4557157854552245059, guid: 552035868732b294f93d82e67c1e034f, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f5c5f981fc06e14d92b806bae836279, type: 2}
+    - target: {fileID: 4557157854552245059, guid: 552035868732b294f93d82e67c1e034f, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: f97a613343925fa4fbfba53025f51cfa, type: 2}
     - target: {fileID: 5025131774555055460, guid: 552035868732b294f93d82e67c1e034f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.996913
@@ -1188,6 +1210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877e1cb5f3c98624eac6b2f42ba27c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myChild: {fileID: 0}
 --- !u!1 &1064091424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,6 +1542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877e1cb5f3c98624eac6b2f42ba27c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myChild: {fileID: 0}
 --- !u!1 &1288632881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,7 +1871,7 @@ Transform:
   m_GameObject: {fileID: 1446250540}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.52, y: 1, z: -5.55}
+  m_LocalPosition: {x: -5.52, y: 1, z: 0.39}
   m_LocalScale: {x: 5, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2153,6 +2177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877e1cb5f3c98624eac6b2f42ba27c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myChild: {fileID: 0}
 --- !u!1001 &1866460257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2401,6 +2426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877e1cb5f3c98624eac6b2f42ba27c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myChild: {fileID: 0}
 --- !u!1 &2011893280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,6 +2975,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: -3086478328068027308, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 978cb99950ecfbd4498d873edf1acd75, type: 2}
     - target: {fileID: -3086436065929644917, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
       propertyPath: m_Layer
       value: 12
@@ -3058,6 +3088,10 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -1283408554089789195, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
+      propertyPath: m_Name
+      value: Paladin_J_Nordstrom
+      objectReference: {fileID: 0}
+    - target: {fileID: -1283408554089789195, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
@@ -3145,6 +3179,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 415287891258781815, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 978cb99950ecfbd4498d873edf1acd75, type: 2}
     - target: {fileID: 608321761475470972, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 52.631603
@@ -3157,6 +3195,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -16.426567
       objectReference: {fileID: 0}
+    - target: {fileID: 701420837181973649, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 978cb99950ecfbd4498d873edf1acd75, type: 2}
     - target: {fileID: 919132149155446097, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
       propertyPath: m_Name
       value: Paladin WProp J Nordstrom
@@ -3164,6 +3206,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051571768989249988, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
+      propertyPath: m_Name
+      value: Paladin_J_Nordstrom_Sword
       objectReference: {fileID: 0}
     - target: {fileID: 1051571768989249988, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
       propertyPath: m_Layer
@@ -3301,6 +3347,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 3099756089343826349, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 978cb99950ecfbd4498d873edf1acd75, type: 2}
     - target: {fileID: 3135921509060577837, guid: 28552d7984d3aab41922b3ce3d037a07, type: 3}
       propertyPath: m_Layer
       value: 12

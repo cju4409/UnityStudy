@@ -82,6 +82,26 @@ public class ActionPlayer : BattleSystem
             //FileManager.SaveText($"{Application.dataPath}/Data/PlayerData.json", temp);
             FileManager.SaveToBinary<PlayerData>($"{Application.dataPath}/Data/PlayerData.dat", myData);
         }
+
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            StartCoroutine(DisApearing());
+        }
+    }
+
+    IEnumerator DisApearing()
+    {
+        float v = 0.0f;
+        Renderer[] list = GetComponentsInChildren<Renderer>();
+        while (v < 0.9f)
+        {
+            v = Mathf.Min(v + Time.deltaTime, 0.9f);
+            foreach(Renderer r in list)
+            {
+                r.material.SetFloat("_DissolveAmount", v);
+            }
+            yield return null;
+        }
     }
 
     public void OnSkill()
