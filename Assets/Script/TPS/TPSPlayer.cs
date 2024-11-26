@@ -25,11 +25,11 @@ public class TPSPlayer : AnimatorProperty
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            Study.SoundManager.instance.UpdateEffVolume(Study.SoundManager.instance.effVolume - 0.1f);
+            Study.SoundManager.Instance.UpdateEffVolume(Study.SoundManager.Instance.effVolume - 0.1f);
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            Study.SoundManager.instance.UpdateEffVolume(Study.SoundManager.instance.effVolume + 0.1f);
+            Study.SoundManager.Instance.UpdateEffVolume(Study.SoundManager.Instance.effVolume + 0.1f);
         }
     }
 
@@ -40,6 +40,6 @@ public class TPSPlayer : AnimatorProperty
 
     public void OnFire()
     {
-        Study.SoundManager.instance.PlayOneShot(myGunSound);
+        Study.SoundManager.Instance.PlayOneShot(myGunSound);
     }
 }

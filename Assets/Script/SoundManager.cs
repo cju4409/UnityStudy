@@ -7,16 +7,12 @@ namespace Study
     public partial class SoundManager
     {
         AudioSource _bgm = null;
-        public static SoundManager instance
-        {
-            get; private set;
-        }
         private void Awake()
         {
-            instance = this;
+            base.Initialize();
         }
     }
-    public partial class SoundManager : MonoBehaviour
+    public partial class SoundManager : Singleton<SoundManager>
     {
         public float bgmVolume { get; private set; }
         public float effVolume { get; private set; }

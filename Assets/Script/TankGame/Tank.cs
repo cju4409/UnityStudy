@@ -38,7 +38,7 @@ public class Tank : MonoBehaviour
             myBomb.OnFire();
             //reload
             //부모를 정해주고 Instantiate하면 밑에 트랜스폼 초기화 코드가 필요하지 않음
-            GameObject obj = Instantiate(orgBomb, myMuzzle);
+            GameObject obj = ObjectPool.Instance.GetObject(orgBomb, myMuzzle);
 
             //GameObject obj = Instantiate(orgBomb);
             //obj.transform.parent = myMuzzle;

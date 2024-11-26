@@ -40,7 +40,7 @@ public class Bomb : MonoBehaviour
     {
         GameObject obj = Instantiate(Effect);
         obj.transform.position = pos;
-        Destroy(gameObject);
+        ObjectPool.Instance.Release(gameObject);
     }
 
     // 부딛히기 시작
